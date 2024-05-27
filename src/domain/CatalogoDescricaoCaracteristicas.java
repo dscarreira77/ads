@@ -1,5 +1,8 @@
 package domain;
 
+import domain.alertas.IAlertaAdapter;
+import domain.alertas.IEventoAlerta;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +41,7 @@ public class CatalogoDescricaoCaracteristicas {
 		uni = catUni.obtemUnidade("dB");
 		caract.defineUnidadeMedida(uni);
 		this.adicionaCaracteristica(caract);
-		
+
 	}
 
 	/**
@@ -56,7 +59,11 @@ public class CatalogoDescricaoCaracteristicas {
 	 * @requires car != null
 	 */
 	public void adicionaCaracteristica(DescricaoCaracteristica car) {
-		caracts.put(car.obtemDesignacao(), car);		
+		if (car != null){
+			caracts.put(car.obtemDesignacao(), car);
+		}else{
+			System.out.println("------------------");
+		}
 	}
 
 	/**

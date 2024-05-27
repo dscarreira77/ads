@@ -42,6 +42,7 @@ public class CatalogoContextos {
 	    carCont.associaSensor(sens);
 	    carCont.registaValoresRef(0, 70);
 	    cont.adicionaCaracteristica(carCont);
+
 	    
 	    // Associa este contexto a dois tecnicos e um gestor
 	    Utilizador usr = catUsers.obtemUtilizador("Gestor1");

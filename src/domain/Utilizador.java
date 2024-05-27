@@ -51,10 +51,10 @@ public abstract class Utilizador implements PropertyChangeListener {
 	}
 
 	public List<String> nomesContextoAssociado() {
-		List<String> list = new ArrayList<>();
+		List<String> lista = new ArrayList<>();
 		for(Contexto context : contextosAssociado.values()) {
-			list.add(context.obtemDesignacao());
+			lista.add(context.obtemDesignacao());
 		}
-		return list;
+		return lista;
 	}
 }

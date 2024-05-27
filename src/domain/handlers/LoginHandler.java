@@ -16,10 +16,13 @@ public class LoginHandler implements ILoginHandler {
     @Override
     public boolean login(String nome, String pwd) {
         Utilizador u = catUser.obtemUtilizador(nome);
-        if (u != null && u.pwdCorreta(pwd)) {
-            SessionManager.getInstance().createSession(nome);
-            return true;
+        if (u == null) {
+            return false;
         }
-        return false;
+        if (!u.pwdCorreta(pwd)) {
+            return false;
+        }
+        SessionManager.getInstance().createSession(nome);
+        return true;
     }
 }

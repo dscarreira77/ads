@@ -10,27 +10,27 @@ public class DescricaoCaracteristica {
         this.desig = desig;
     }
 
-    public void associaTipoSensor(TipoSensor ts) {
-        this.sensor = ts;
-    }
-
-    public void defineUnidadeMedida(UnidadeMedida uni) {
-        this.medida = uni;
-    }
-
     public String obtemDesignacao() {
         return desig;
+    }
+    public void associaTipoSensor(TipoSensor ts) {
+        this.sensor = ts;
     }
 
     public TipoSensor obtemTipoSensor() {
         return sensor;
     }
 
-    public UnidadeMedida obtemUnidadeMedida() {
-        return medida;
+    public void defineUnidadeMedida(UnidadeMedida uni) {
+        this.medida = uni;
     }
 
     public String obtemAbreviaturaUnidade() {
         return medida.obtemAbreviatura();
     }
+
+    public UnidadeMedida obtemUnidadeMedida() {
+        return medida;
+    }
+
 }

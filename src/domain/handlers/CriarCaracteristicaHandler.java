@@ -10,8 +10,7 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
     private CatalogoUnidades catUnidades;
     private DescricaoCaracteristica dc;
 
-    public CriarCaracteristicaHandler(CatalogoDescricaoCaracteristicas catDescrCaract,
-                                      CatalogoTiposSensor catTiposSensor, CatalogoUnidades catUnidades) {
+    public CriarCaracteristicaHandler(CatalogoDescricaoCaracteristicas catDescrCaract, CatalogoTiposSensor catTiposSensor, CatalogoUnidades catUnidades) {
         this.catDescCaracteristicas = catDescrCaract;
         this.catTipoSensor = catTiposSensor;
         this.catUnidades = catUnidades;
@@ -19,11 +18,11 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
 
     @Override
     public boolean criarCaracteristica(String desig) {
-        if (!catDescCaracteristicas.existeCaracteristica(desig)) {
-            dc = new DescricaoCaracteristica(desig);
-            return true;
+        if (catDescCaracteristicas.existeCaracteristica(desig)) {
+            return false;
         }
-        return false;
+        dc = new DescricaoCaracteristica(desig);
+        return true;
     }
 
     @Override
@@ -34,11 +33,11 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
     @Override
     public boolean indicarTipoSensor(String tipo) {
         TipoSensor ts = catTipoSensor.obtemTipoSensor(tipo);
-        if(ts != null) {
-            dc.associaTipoSensor(ts);
-            return true;
+        if (ts == null) {
+            return false;
         }
-        return false;
+        dc.associaTipoSensor(ts);
+        return true;
     }
 
     @Override
@@ -49,16 +48,19 @@ public class CriarCaracteristicaHandler implements ICriarCaracteristicaHandler {
     @Override
     public boolean indicarUnidade(String abrev) {
         UnidadeMedida uni = catUnidades.obtemUnidade(abrev);
-        if(uni != null) {
-            dc.defineUnidadeMedida(uni);
-            return true;
+        if (uni == null) {
+            return false;
         }
-        return false;
+        dc.defineUnidadeMedida(uni);
+        return true;
     }
 
     @Override
     public void confirmar() {
-        catDescCaracteristicas.adicionaCaracteristica(dc);
+        if (dc != null) {
+            catDescCaracteristicas.adicionaCaracteristica(dc);
+            dc = null; // Reseta dc para evitar reutilização indevida
+        }
     }
 
     @Override

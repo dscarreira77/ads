@@ -46,21 +46,6 @@ public class GoodPlaces implements IGoodPlaces {
 	}
 
 	@Override
-	public ICriarCaracteristicaHandler obtemCriarCaracteristicaHandler() {
-		Utilizador u = getAuthenticatedUser();
-		if(u instanceof Tecnico) {
-			return new CriarCaracteristicaHandler(catDescrCaract, catTiposSensor, catUnidades);
-		}
-		return null;
-	}
-
-	@Override
-	public IRecolherDadosHandler obtemRecolherDadosHandler() {
-		Utilizador t = getAuthenticatedUser();
-		return new RecolherDadosHandler(t, catContexts);
-	}
-
-	@Override
 	public ILogoutHandler obtemLogoutHandler() {
 		return new LogoutHandler();
 	}
@@ -71,7 +56,22 @@ public class GoodPlaces implements IGoodPlaces {
 	}
 
 	private Utilizador getAuthenticatedUser() {
-		 return catUser.obtemUtilizador(SessionManager.getInstance().getAuthenticatedUser());
+		return catUser.obtemUtilizador(SessionManager.getInstance().getAuthenticatedUser());
+	}
+
+	@Override
+	public ICriarCaracteristicaHandler obtemCriarCaracteristicaHandler() {
+		Utilizador u = getAuthenticatedUser();
+		if(u instanceof Tecnico) {
+			return new CriarCaracteristicaHandler(catDescrCaract, catTiposSensor, catUnidades);
+		}
+		return null;
+	}
+
+	@Override
+	public IRecolherDadosHandler obtemRecolherDadosHandler() {
+		Utilizador u = getAuthenticatedUser();
+		return new RecolherDadosHandler(u, catContexts);
 	}
 
 	public CatalogoUnidades obtemCatalogoUnidades() {

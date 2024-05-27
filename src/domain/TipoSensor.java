@@ -51,8 +51,8 @@ public class TipoSensor {
 
     public Iterable<String> obtemNomeUnidades() {
 		List<String> list = new ArrayList<>();
-		String abrev = unidade.obtemAbreviatura();
-		list.add(abrev);
+		String abreviatura = unidade.obtemAbreviatura();
+		list.add(abreviatura);
 		return list;
     }
 }

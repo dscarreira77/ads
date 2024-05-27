@@ -1,5 +1,7 @@
 package domain;
 
+import domain.alertas.IEventoAlerta;
+
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +19,8 @@ public class CaracteristicaContexto {
         this.support = new PropertyChangeSupport(this);
     }
 
-    public void registarLeitura() {
-        //TODO
+    public void registarLeitura(String desc,PropertyChangeSupport support) {
+
     }
 
     public String definirUnidadeCorreta() {
@@ -49,7 +51,7 @@ public class CaracteristicaContexto {
         return referencia;
     }
 
-    public void addObserver(Contexto contexto) {
-        this.support.addPropertyChangeListener(contexto);
+    public void addObserver(Contexto ctx) {
+        this.support.addPropertyChangeListener(ctx);
     }
 }

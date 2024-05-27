@@ -25,24 +25,25 @@ public class RecolherDadosHandler implements IRecolherDadosHandler {
 
     @Override
     public boolean indicarContexto(String nome) {
-        this.ctx = catContextos.obtemContexto(nome);
-        System.out.println(ctx);
-        if(ctx != null) {
-            tecnico.ficasAssociado(ctx);
-            return true;
+        Contexto contexto = catContextos.obtemContexto(nome);
+        if (contexto == null) {
+            return false;
         }
-        return false;
+        this.ctx = contexto;
+        tecnico.ficasAssociado(ctx);
+        return true;
     }
 
     @Override
     public Iterable<String> obtemCaracteristicasUnidades() {
-        List<String> list = new ArrayList<>();
-        Iterable<Par<String, String>> pares =  ctx.obtemCaracteristicasUnidade();
-        for (Par<String, String> par : pares) {
-            list.add(par.primeiro() + "-" + par.segundo());
+        if (ctx == null) {
+            return new ArrayList<>();
         }
-
-        return list;
+        List<String> caracteristicasUnidades = new ArrayList<>();
+        for (Par<String, String> par : ctx.obtemCaracteristicasUnidade()) {
+            caracteristicasUnidades.add(par.primeiro() + "-" + par.segundo());
+        }
+        return caracteristicasUnidades;
     }
 
     @Override
@@ -52,11 +53,13 @@ public class RecolherDadosHandler implements IRecolherDadosHandler {
 
     @Override
     public void indicarLeitura(int ano, int mes, int dia, double valor) {
-        ctx.registaLeitura(ano, mes, dia, valor);
+        if (ctx != null) {
+            ctx.registaLeitura(valor);
+        }
     }
 
     @Override
     public void cancelar() {
-
+        ctx = null;
     }
 }

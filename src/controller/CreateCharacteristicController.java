@@ -25,11 +25,11 @@ public class CreateCharacteristicController extends AbstractAuthenticatedUseCase
     
     @FXML
     private void create() {
+		System.out.println("Criando Caracteristica");
        	if (!isInputValid()) {
        		mainView.showError(Constants.CREATE_CHARACTERISTIC_INVALID_NAME, Constants.CREATE_CHARACTERISTIC_RECOVERY);
        		return;
        	}
-       	
        	if (!nameField.isDisable()) {
        		if (cch.criarCaracteristica(nameField.getText())) {
        			nameField.setDisable(true);
