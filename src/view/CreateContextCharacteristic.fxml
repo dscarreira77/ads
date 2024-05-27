@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateContextCharacteristicController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" styleClass="form-title" text="Criar Contexto" />
+      <GridPane layoutX="5.0" layoutY="67.0" prefHeight="113.0" prefWidth="590.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="67.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="118.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Caracteristica" />
+            <ComboBox fx:id="nameField" prefWidth="150.0" GridPane.columnIndex="1" />
+            
+            
+            <Label text="Códigos de Sensores: "  GridPane.rowIndex="1"/>
+            <TextField fx:id="codeField" onAction="#create" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            
+            <Label text="(separado por virgulas)"  GridPane.rowIndex="2"  GridPane.columnIndex="1"/>
+            
+            
+            <GridPane prefHeight="56.0" prefWidth="420.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#create" text="Adicionar Sensores" />
+                  <Button mnemonicParsing="false" onAction="#cancel" text="Cancelar" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#next" text="Seguinte" GridPane.columnIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

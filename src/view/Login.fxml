@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Label layoutX="91.0" layoutY="68.0" styleClass="form-title" text="Login" AnchorPane.leftAnchor="91.0" AnchorPane.topAnchor="68.0" />
+      <GridPane layoutX="91.0" layoutY="109.0" prefHeight="150.0" prefWidth="306.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="203.0" AnchorPane.topAnchor="109.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="10.0" prefWidth="146.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="144.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Username" />
+            <Label text="Password" GridPane.rowIndex="1" />
+            <TextField fx:id="usernameField" onAction="#handleSignIn" GridPane.columnIndex="1" />
+            <PasswordField fx:id="passwordField" onAction="#handleSignIn" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="errorMessageField" prefHeight="36.0" prefWidth="286.0" styleClass="error-message" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Button layoutX="234.0" layoutY="278.0" mnemonicParsing="false" onAction="#handleSignIn" text="Sign in" AnchorPane.bottomAnchor="96.0" AnchorPane.rightAnchor="307.0" />
+   </children>
+</AnchorPane>

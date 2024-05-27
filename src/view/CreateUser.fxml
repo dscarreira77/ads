@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateUserController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" styleClass="form-title" stylesheets="@application.css" text="Criar Utilizador" />
+      <GridPane hgap="10.0" layoutX="10.0" layoutY="89.0" prefHeight="254.0" prefWidth="581.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="287.0" minWidth="10.0" prefWidth="181.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="409.0" minWidth="10.0" prefWidth="409.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="form-key" text="Tipo de utilizador:" textAlignment="RIGHT" />            
+            <ComboBox fx:id="userTypeField" prefWidth="150.0" GridPane.columnIndex="1" />
+            
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" styleClass="form-key" text="Nome do utilizador:" textAlignment="RIGHT" GridPane.rowIndex="1" />
+            <TextField fx:id="usernameField" onAction="#create" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            
+			<Label styleClass="form-key" text="Palavra-passe:" GridPane.rowIndex="2" />
+            <PasswordField fx:id="passwordField" onAction="#create" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            
+            <Label styleClass="form-key" text="Palavra-passe (de novo):" GridPane.rowIndex="3" />
+            <PasswordField fx:id="passwordAgainField" onAction="#create" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            
+            <Label styleClass="form-key" text="Email:" GridPane.rowIndex="4" />
+            <TextField fx:id="emailField" onAction="#create" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#create" text="Criar" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#cancel" text="Cancelar" />
+               </children>
+            </GridPane>
+            
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
