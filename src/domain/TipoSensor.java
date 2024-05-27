@@ -49,4 +49,10 @@ public class TipoSensor {
 		return sensores.get(codigo);
 	}
 
+    public Iterable<String> obtemNomeUnidades() {
+		List<String> list = new ArrayList<>();
+		String abrev = unidade.obtemAbreviatura();
+		list.add(abrev);
+		return list;
+    }
 }

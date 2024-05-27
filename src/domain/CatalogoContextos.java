@@ -86,7 +86,7 @@ public class CatalogoContextos {
 	 * @requires cont != null
 	 */
 	public void adicionaContexto(Contexto cont) {
-		contextos.put(cont.obtemDesignacao(), cont);		
+		contextos.put(cont.obtemDesignacao(), cont);
 	}
 
 	/**

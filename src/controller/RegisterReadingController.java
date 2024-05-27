@@ -73,6 +73,7 @@ public class RegisterReadingController extends AbstractAuthenticatedUseCaseContr
 		configsTable.setItems(data);
 		
 		Iterable<String> contexts = cuh.iniciarRecolha();
+		System.out.println(contexts);
 		contextField.getItems().clear();
 		for (String ctx : contexts) {
 			contextField.getItems().add(ctx);
@@ -120,22 +121,23 @@ public class RegisterReadingController extends AbstractAuthenticatedUseCaseContr
 	   				Constants.REGISTER_READING_RECOVERY);
 		   return;
 	   }
-   		String[] cha = characteristicField.getValue().split(" - ");
-   		try {
-	   		if (cha != null && cuh.indicarCaracteristica(cha[0], cha[1])) {
-	   			String reading = readingField.getText();
-	   			data.add(new ConfigurationLine(cha[0], cha[1], reading));
-	   			Calendar c = Calendar.getInstance();
-	   			cuh.indicarLeitura(c.get(Calendar.YEAR), c.get(Calendar.MONTH), 
-	   					c.get(Calendar.DAY_OF_MONTH), Double.parseDouble(reading));
-	   		} else {
-	 		   mainView.showError(Constants.REGISTER_READING_INVALID_CHARACTERISTIC, 
-	 	   				Constants.REGISTER_READING_RECOVERY);
-	   		}
-   		} catch (NumberFormatException e ){
-   			mainView.showError(Constants.REGISTER_READING_INVALID_CHARACTERISTIC, 
- 	   				Constants.REGISTER_READING_RECOVERY);
-   		}
+		String cha1 = characteristicField.getValue();
+	   String[] cha = cha1.split("-");
+		try {
+			if (cha != null && cuh.indicarCaracteristica(cha[0], cha[1])) {
+				String reading = readingField.getText();
+				data.add(new ConfigurationLine(cha[0], cha[1], reading));
+				Calendar c = Calendar.getInstance();
+				cuh.indicarLeitura(c.get(Calendar.YEAR), c.get(Calendar.MONTH),
+						c.get(Calendar.DAY_OF_MONTH), Double.parseDouble(reading));
+			} else {
+			   mainView.showError(Constants.REGISTER_READING_INVALID_CHARACTERISTIC,
+						Constants.REGISTER_READING_RECOVERY);
+			}
+		} catch (NumberFormatException e ){
+			mainView.showError(Constants.REGISTER_READING_INVALID_CHARACTERISTIC,
+					Constants.REGISTER_READING_RECOVERY);
+		}
    }
 }
 
